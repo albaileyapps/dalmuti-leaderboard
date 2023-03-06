@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://components/PlayerListItem.gd" id="1_1xljq"]
 [ext_resource type="StyleBox" uid="uid://c8kmvvtrv0cla" path="res://theme/player_list_item_style_box.tres" id="2_ehg8i"]
-[ext_resource type="Texture2D" uid="uid://csgjfhvo47x7a" path="res://assets/img/drag_handle.png" id="3_1rl58"]
+[ext_resource type="Texture2D" uid="uid://bg33goxdopldo" path="res://assets/img/icon-drag-handle.png" id="3_uamku"]
 
 [node name="PlayerListItem" type="Panel"]
 custom_minimum_size = Vector2(2.08165e-12, 60)
@@ -38,4 +38,4 @@ vertical_alignment = 2
 [node name="DragHandle" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("3_1rl58")
+texture = ExtResource("3_uamku")

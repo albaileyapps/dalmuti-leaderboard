@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csgjfhvo47x7a"
-path="res://.godot/imported/drag_handle.png-31ad04cf93aa8355306eea1c7da08afa.ctex"
+uid="uid://bg33goxdopldo"
+path="res://.godot/imported/icon-drag-handle.png-b1fd308cc5b0cf804b8f3268eb766eeb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/drag_handle.png"
-dest_files=["res://.godot/imported/drag_handle.png-31ad04cf93aa8355306eea1c7da08afa.ctex"]
+source_file="res://assets/img/icon-drag-handle.png"
+dest_files=["res://.godot/imported/icon-drag-handle.png-b1fd308cc5b0cf804b8f3268eb766eeb.ctex"]
 
 [params]
 

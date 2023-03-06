@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dm8vmvjibxhdo"]
+[gd_scene load_steps=5 format=3 uid="uid://dm8vmvjibxhdo"]
 
 [ext_resource type="StyleBox" uid="uid://b6xk41e7j1xt7" path="res://theme/nav_bar_style_box.tres" id="1_1de1u"]
 [ext_resource type="Script" path="res://components/NavBar.gd" id="2_6uq1o"]
+[ext_resource type="Texture2D" uid="uid://d0kfur5hcxt6a" path="res://assets/img/button-close.png" id="3_vp63j"]
+[ext_resource type="Texture2D" uid="uid://tkv2ehchgxgq" path="res://assets/img/button-close-pressed.png" id="4_txeuy"]
 
 [node name="NavBar" type="Panel"]
 custom_minimum_size = Vector2(2.08165e-12, 60)
@@ -14,6 +16,26 @@ grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_1de1u")
 script = ExtResource("2_6uq1o")
 
+[node name="HBoxLeft" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 2
+
+[node name="CloseButton" type="TextureButton" parent="HBoxLeft"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("3_vp63j")
+texture_pressed = ExtResource("4_txeuy")
+texture_hover = ExtResource("4_txeuy")
+
+[node name="HBoxRight" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 648.0
+offset_right = 648.0
+offset_bottom = 60.0
+mouse_filter = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -21,12 +43,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="TitleLabel" type="Label" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(2.08165e-12, 60)
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "TITLE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="HBoxLeft/CloseButton" to="." method="_on_close_button_pressed"]
