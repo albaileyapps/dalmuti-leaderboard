@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://bybyd2074h6i7"]
+
+[ext_resource type="Script" path="res://scenes/MainMenu.gd" id="1_6tsuc"]
+[ext_resource type="PackedScene" uid="uid://dm8vmvjibxhdo" path="res://components/NavBar.tscn" id="2_71855"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6tsuc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NavBar" parent="VBoxContainer" instance=ExtResource("2_71855")]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="GroupList" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="AddGroupButton" type="Button" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Add Group"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/AddGroupButton" to="." method="_on_add_group_button_pressed"]

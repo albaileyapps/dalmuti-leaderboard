@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://xp3vmh64fxqo"]
+
+[ext_resource type="Script" path="res://components/PlayerListItem.gd" id="1_1xljq"]
+[ext_resource type="StyleBox" uid="uid://c8kmvvtrv0cla" path="res://theme/player_list_item_style_box.tres" id="2_ehg8i"]
+[ext_resource type="Texture2D" uid="uid://csgjfhvo47x7a" path="res://assets/img/drag_handle.png" id="3_1rl58"]
+
+[node name="PlayerListItem" type="Panel"]
+custom_minimum_size = Vector2(2.08165e-12, 60)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("2_ehg8i")
+script = ExtResource("1_1xljq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 60)
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 22
+text = "Name"
+vertical_alignment = 2
+
+[node name="DragHandle" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_1rl58")

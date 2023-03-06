@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfjh3wmiou3bo"]
+
+[ext_resource type="Script" path="res://scenes/Leaderboard.gd" id="1_iudgu"]
+[ext_resource type="PackedScene" uid="uid://dm8vmvjibxhdo" path="res://components/NavBar.tscn" id="2_mm8tp"]
+[ext_resource type="PackedScene" uid="uid://bln32orf3r0gp" path="res://components/ReorderableList.tscn" id="3_vxn4h"]
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iudgu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NavBar" parent="VBoxContainer" instance=ExtResource("2_mm8tp")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="ReorderableList" parent="VBoxContainer/MarginContainer" instance=ExtResource("3_vxn4h")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LinkButton" type="Button" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Add Player"
+flat = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

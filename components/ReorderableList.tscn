@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bln32orf3r0gp"]
+
+[ext_resource type="Script" path="res://components/ReorderableList.gd" id="1_l8bqu"]
+
+[node name="ReorderableList" type="ScrollContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l8bqu")
+
+[node name="ListContainer" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+
+[connection signal="gui_input" from="ListContainer" to="." method="_on_list_container_gui_input"]
