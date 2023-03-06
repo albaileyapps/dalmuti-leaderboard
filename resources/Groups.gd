@@ -6,9 +6,13 @@ class_name Groups
 func _init(plist: Array[Group] = []):
 	list = plist
 
-func add_group(group: Group):
-	list.append(group)
+func add_group(p_group: Group):
+	list.append(p_group)
+	emit_changed()
+
+func remove_group(p_group: Group):
+	list.erase(p_group)
+	emit_changed()
 	
 func save():
-	print("saving groups")
 	ResourceSaver.save(self, Consts.SAVE_GROUPS_PATH)

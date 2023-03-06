@@ -20,3 +20,6 @@ res://resources/Groups.gd
 res://scenes/MainMenu.gd
 res://components/GroupListItem.tscn
 res://components/GroupListItem.gd
+res://scenes/Scenebase.gd
+res://theme/bkg_style_box.tres
+res://scenes/Scenebase.tscn

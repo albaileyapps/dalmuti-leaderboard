@@ -25,6 +25,7 @@ func drag_handle_contains_mouse() -> bool:
 	return %DragHandle.get_global_rect().has_point(get_global_mouse_position())
 	
 func tween_position(p_pos: Vector2):
+	if position == p_pos : return
 	if tween != null: tween.kill()
 	tween = create_tween().chain()
 	var callback = func():
