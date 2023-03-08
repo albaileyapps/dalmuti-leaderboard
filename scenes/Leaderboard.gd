@@ -22,7 +22,7 @@ func setup(p_group: Group):
 	
 func _build_list():
 	_remove_list_items()
-	group.players.sort_custom(func(a, b): return a.index < b.index)
+	group.sort_players()
 
 	for player in group.players:
 		var list_item = player_list_item.instantiate()
@@ -35,12 +35,6 @@ func _build_list():
 func _remove_list_items():
 	player_list.remove_all()
 	
-func _process(delta):
-	pass
-
-func _on_gui_input(event):
-	pass
-
 func _on_nav_bar_close_pressed():
 	remove_from_parent_scene(transition_duration)
 	emit_signal("exit")
@@ -65,6 +59,7 @@ func _on_add_player_button_pressed():
 	
 func _on_delete_player(p_player: Player):
 	group.remove_player(p_player)
+	group.reset_indices()
 	group.save()
 	_build_list()
 

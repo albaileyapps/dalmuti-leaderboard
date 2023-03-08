@@ -24,5 +24,13 @@ func remove_player(p_player: Player):
 	players.erase(p_player)
 	emit_changed()
 	
+func reset_indices():
+	sort_players()
+	for i in players.size():
+		players[i].index = i
+		
+func sort_players():
+	players.sort_custom(func(a, b): return a.index < b.index)
+	
 func save():
 	ResourceSaver.save(self, Consts.SAVE_GROUPS_DIR + id + ".tres")
