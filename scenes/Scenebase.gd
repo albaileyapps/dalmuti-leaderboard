@@ -3,9 +3,14 @@ class_name Scenebase
 
 const transition_duration = 0.3
 
-func fade(p_to: float, p_duration: float):
+var fadables: Array[Node] = []
+signal exit
+
+func fade(p_to: float, p_duration: float, p_delay: float):
 	var tween = create_tween()
-	tween.tween_property(self, "modulate:a", p_to, p_duration)
+	tween.tween_interval(p_delay)
+	for fadable in fadables:
+		tween.tween_property(fadable, "modulate:a", p_to, p_duration)
 
 func add_child_scene(p_scene: Scenebase, p_duration: float, p_delay: float):
 	p_scene.modulate.a = 0

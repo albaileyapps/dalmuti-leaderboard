@@ -23,3 +23,5 @@ res://components/GroupListItem.gd
 res://scenes/Scenebase.gd
 res://theme/bkg_style_box.tres
 res://scenes/Scenebase.tscn
+res://autoload/Utils.gd
+res://theme/nav_bar_style_box.tres

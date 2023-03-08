@@ -1,25 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://sxqh27i8spo4"]
+[gd_scene load_steps=6 format=3 uid="uid://sxqh27i8spo4"]
 
 [ext_resource type="Script" path="res://components/GroupListItem.gd" id="1_2rjrk"]
+[ext_resource type="StyleBox" uid="uid://c8kmvvtrv0cla" path="res://theme/player_list_item_style_box.tres" id="1_t6cke"]
 [ext_resource type="Texture2D" uid="uid://brrwxq6f2y4k4" path="res://assets/img/icon-arrow-right.png" id="2_u2y7x"]
 [ext_resource type="Texture2D" uid="uid://by0bw1hfet6we" path="res://assets/img/button-delete.png" id="3_m2s0w"]
 [ext_resource type="Texture2D" uid="uid://bf0laxwwiojas" path="res://assets/img/button-delete-pressed.png" id="4_c3tbi"]
 
 [node name="GroupListItem" type="Panel"]
-custom_minimum_size = Vector2(2.08165e-12, 60)
+custom_minimum_size = Vector2(2.08165e-12, 180)
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+size_flags_horizontal = 3
 mouse_filter = 1
+theme_override_styles/panel = ExtResource("1_t6cke")
 script = ExtResource("1_2rjrk")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-offset_right = 648.0
-offset_bottom = 60.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -28,6 +34,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 48
 text = "GROUP NAME"
 clip_text = true
 
@@ -40,6 +47,8 @@ texture = ExtResource("2_u2y7x")
 [node name="DeleteGroupButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture_normal = ExtResource("3_m2s0w")
 texture_pressed = ExtResource("4_c3tbi")
 texture_hover = ExtResource("4_c3tbi")

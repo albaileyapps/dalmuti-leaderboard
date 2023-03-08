@@ -1,7 +1,7 @@
 extends ScrollContainer
 
 var list_items: Array[PlayerListItem] = []
-const  spacing = 5
+const  spacing = 20
 
 var is_dragging = false
 var current_drag_index: int
@@ -25,7 +25,14 @@ func add_item(p_item: PlayerListItem):
 	%ListContainer.add_child(p_item)
 	list_items.append(p_item)
 	
-func reposition_items():
+	calculate_size()
+	
+func remove_all():
+	for child in %ListContainer.get_children():
+		child.queue_free()
+	list_items = []
+		
+func reorder_items():
 
 	var y_pos = 0
 	list_items.sort_custom(func(a, b): return a.position.y < b.position.y)
@@ -36,6 +43,7 @@ func reposition_items():
 		list_items[i].player.index = i
 		if list_items[i] != drag_item:
 			list_items[i].tween_position(Vector2(0, y_pos))
+	emit_signal("reordered")
 
 
 
@@ -50,15 +58,20 @@ func calculate_size():
 	%ListContainer.set_custom_minimum_size(Vector2(0, height))
 
 func _process(delta):
-	if is_dragging and drag_item != null:
-			drag_item.position.y = $ListContainer.get_local_mouse_position().y - 30
-#			check_item_at_mouse_position()
+	if !is_dragging: return
+	if drag_item == null: return
+	drag_item.position.y = $ListContainer.get_local_mouse_position().y - 30
+	var screen_touch_y = get_local_mouse_position().y
+	if screen_touch_y < 200:
+		scroll_vertical -= 10
+	if screen_touch_y > get_rect().size.y - 200: 
+		scroll_vertical += 10
 
 func _input(event):
 	
 	if event is InputEventMouseMotion:
 		if !is_dragging: return
-		reposition_items()
+		reorder_items()
 	
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
@@ -81,7 +94,7 @@ func drop_item():
 	is_dragging = false
 	drag_item.z_index = 0
 	drag_item = null
-	reposition_items()
+	reorder_items()
 		
 		
 func set_auto_scroll(val: bool):

@@ -13,17 +13,20 @@ config_version=5
 config/name="dalmuti-leaderboard"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
 
 [autoload]
 
 Consts="*res://autoload/Consts.gd"
+Utils="*res://autoload/Utils.gd"
 
 [display]
 
-window/size/viewport_width=648
-window/size/viewport_height=1152
+window/size/viewport_width=1080
+window/size/viewport_height=1920
 window/handheld/orientation=1
+window/ios/hide_status_bar=false
 window/stretch/aspect="expand"
 
 [input_devices]
@@ -33,4 +36,4 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 renderer/rendering_method="mobile"
-environment/defaults/default_clear_color=Color(1, 1, 1, 1)
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

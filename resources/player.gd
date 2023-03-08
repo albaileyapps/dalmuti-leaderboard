@@ -1,7 +1,7 @@
 extends Resource
 class_name Player
 
-@export var id: int: 
+@export var id: String: 
 	set(p_val):
 		id = p_val
 		emit_changed()
@@ -11,11 +11,14 @@ class_name Player
 		emit_changed()
 @export var index: int: 
 	set(p_val):
+		if p_val == index: return
 		index = p_val
 		emit_changed()
 
-func _init(p_id: int = 0, p_name: String = "", p_index: int = 0):
+func _init(p_id: String = "", p_name: String = "", p_index: int = 0):
 	id = p_id
-	name = p_name
+	name = p_name.to_upper()
 	index = p_index
 	
+func save():
+	ResourceSaver.save(self, Consts.SAVE_GROUPS_DIR + id + ".tres")
