@@ -32,8 +32,15 @@ func _load_groups():
 	groups.sort_custom(func(a, b): return a.name < b.name)
 
 func _on_add_group_button_pressed():
-	if %AddGroupLineEdit.text == "": return
-	var group = Group.new(Utils.uuid(), %AddGroupLineEdit.text)
+	_add_group(%AddGroupLineEdit.text)
+	
+func _on_add_group_line_edit_gui_input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER and not event.echo:
+		_add_group(%AddGroupLineEdit.text)
+	
+func _add_group(p_name: String):
+	if p_name == "": return
+	var group = Group.new(Utils.uuid(), p_name)
 	groups.append(group)
 	group.save()
 	add_list_item(group)
@@ -78,3 +85,4 @@ func _on_edit_mode_button_pressed():
 	%AddGroupContainer.visible = edit_mode
 	print("EDIT MODE: ", edit_mode)
 	get_tree().call_group(LIST_ITEM_GROUP, "set", "is_edit_mode", edit_mode)
+

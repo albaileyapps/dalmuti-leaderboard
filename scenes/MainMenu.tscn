@@ -53,6 +53,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 48
 placeholder_text = "Add Group"
+alignment = 1
 
 [node name="AddGroupButton" type="TextureButton" parent="VBoxContainer/AddGroupContainer/HBoxContainer"]
 layout_mode = 2
@@ -78,6 +79,7 @@ size_flags_horizontal = 3
 theme_override_constants/separation = 20
 
 [connection signal="pressed" from="VBoxContainer/NavBar/HBoxRight/EditModeButton" to="." method="_on_edit_mode_button_pressed"]
+[connection signal="gui_input" from="VBoxContainer/AddGroupContainer/HBoxContainer/AddGroupLineEdit" to="." method="_on_add_group_line_edit_gui_input"]
 [connection signal="pressed" from="VBoxContainer/AddGroupContainer/HBoxContainer/AddGroupButton" to="." method="_on_add_group_button_pressed"]
 
 [editable path="VBoxContainer/NavBar"]

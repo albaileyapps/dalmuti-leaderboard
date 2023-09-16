@@ -105,9 +105,9 @@ text = "Randomize"
 icon = ExtResource("9_1ck2v")
 flat = true
 
-[connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="close_pressed" from="VBoxContainer/NavBar" to="." method="_on_nav_bar_close_pressed"]
 [connection signal="pressed" from="VBoxContainer/NavBar/HBoxRight/EditModeButton" to="." method="_on_edit_mode_button_pressed"]
+[connection signal="gui_input" from="VBoxContainer/AddPlayerContainer/HBoxContainer/AddPlayerLineEdit" to="." method="_on_add_player_line_edit_gui_input"]
 [connection signal="pressed" from="VBoxContainer/AddPlayerContainer/HBoxContainer/AddPlayerButton" to="." method="_on_add_player_button_pressed"]
 [connection signal="reordered" from="VBoxContainer/MarginContainer/ReorderableList" to="." method="_on_reorderable_list_reordered"]
 [connection signal="pressed" from="VBoxContainer/BottomButtonContainer/HBoxContainer/RandomizeButton" to="." method="_on_randomize_button_pressed"]

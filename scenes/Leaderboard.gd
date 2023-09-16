@@ -50,8 +50,15 @@ func _on_edit_mode_button_pressed():
 	get_tree().call_group(LIST_ITEM_GROUP, "set", "is_edit_mode", edit_mode)
 
 func _on_add_player_button_pressed():
-	if %AddPlayerLineEdit.text == "": return
-	var player = Player.new(Utils.uuid(), %AddPlayerLineEdit.text, group.players.size())
+	_add_player(%AddPlayerLineEdit.text)
+	
+func _on_add_player_line_edit_gui_input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_ENTER and not event.echo:
+		_add_player(%AddPlayerLineEdit.text)
+	
+func _add_player(p_name: String):
+	if p_name == "": return
+	var player = Player.new(Utils.uuid(), p_name, group.players.size())
 	group.add_player(player)
 	group.save()
 	%AddPlayerLineEdit.text = ""
@@ -69,3 +76,4 @@ func _on_randomize_button_pressed():
 	for i in group.players.size():
 		group.players[i].index = i
 	_build_list()
+	
